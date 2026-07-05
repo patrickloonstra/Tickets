@@ -7,8 +7,16 @@ import { decidePhoto } from '../lib/repo'
 
 const STACK_SIZE = 4
 
-export function SortView() {
-  const inbox = usePhotosByStatus(['inbox'])
+interface Props {
+  /** Restrict the deck to these photo ids (used for sorting within one event/group). Omit to sort the whole inbox. */
+  photoIds?: string[]
+  title?: string
+  onBack?: () => void
+}
+
+export function SortView({ photoIds, title, onBack }: Props) {
+  const allInbox = usePhotosByStatus(['inbox'])
+  const inbox = photoIds ? allInbox?.filter((p) => photoIds.includes(p.id)) : allInbox
   const queue = inbox?.slice(0, STACK_SIZE)
   const top = queue?.[0]
 
@@ -29,13 +37,33 @@ export function SortView() {
       <EmptyState
         icon="◐"
         title="Helemaal bijgewerkt"
-        description="Geen nieuwe foto's om te sorteren. Voeg foto's toe via Bibliotheek om verder te gaan."
+        description={
+          onBack
+            ? 'Niets meer te sorteren in dit groepje.'
+            : "Geen nieuwe foto's om te sorteren. Geef toegang tot meer foto's via Bibliotheek."
+        }
+        action={
+          onBack && (
+            <button type="button" onClick={onBack} className="mt-2 text-sm underline text-[var(--color-mist)]">
+              Terug
+            </button>
+          )
+        }
       />
     )
   }
 
   return (
-    <div className="flex flex-1 flex-col items-center px-6 pb-6 pt-4">
+    <div className="flex flex-1 flex-col items-center px-6 pb-6 pt-[max(1rem,env(safe-area-inset-top))]">
+      {onBack && (
+        <div className="mb-2 flex w-full max-w-sm items-center justify-between">
+          <button type="button" onClick={onBack} className="text-sm text-[var(--color-mist)]">
+            ← Terug
+          </button>
+          {title && <span className="text-sm text-[var(--color-paper)]">{title}</span>}
+          <span />
+        </div>
+      )}
       <p className="mb-4 text-sm text-[var(--color-mist)] font-mono-num">{inbox.length} te gaan</p>
       <div className="relative w-full max-w-sm flex-1" style={{ aspectRatio: '3 / 4' }}>
         <AnimatePresence>

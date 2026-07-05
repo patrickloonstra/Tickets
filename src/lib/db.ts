@@ -19,6 +19,8 @@ export interface Photo {
   favorite: boolean
   albumIds: string[]
   lastViewedAt: number
+  lat?: number
+  lng?: number
 }
 
 export interface Album {

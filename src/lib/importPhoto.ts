@@ -1,19 +1,19 @@
 import type { Photo } from './db'
-import { readTakenAt } from './exif'
+import { readExif } from './exif'
 import { dHashFromGray, hashToHex } from './hash'
 import { createThumbnail, grayscaleForHash, grayscaleForSharpness, readImageDimensions } from './imagePixels'
 import { laplacianVariance } from './sharpness'
 
 /**
  * Full local analysis pipeline for a single imported file: thumbnail,
- * dimensions, EXIF date, perceptual hash and blur score. Nothing here
+ * dimensions, EXIF date/GPS, perceptual hash and blur score. Nothing here
  * touches the network — nothing leaves the device.
  */
 export async function analyzeFile(file: File): Promise<Omit<Photo, 'id' | 'status' | 'favorite' | 'albumIds' | 'lastViewedAt'>> {
-  const [thumbBlob, dims, takenAt, hashGray, sharpGray] = await Promise.all([
+  const [thumbBlob, dims, exif, hashGray, sharpGray] = await Promise.all([
     createThumbnail(file),
     readImageDimensions(file),
-    readTakenAt(file),
+    readExif(file),
     grayscaleForHash(file),
     grayscaleForSharpness(file),
   ])
@@ -28,7 +28,9 @@ export async function analyzeFile(file: File): Promise<Omit<Photo, 'id' | 'statu
     mimeType: file.type,
     width: dims.width,
     height: dims.height,
-    takenAt,
+    takenAt: exif.takenAt,
+    lat: exif.lat,
+    lng: exif.lng,
     importedAt: Date.now(),
     size: file.size,
     phash,
