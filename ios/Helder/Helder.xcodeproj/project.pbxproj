@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		788ED0E9CE18464780EC5231 /* HelderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8C774BF48646A4B7EE3C9A /* HelderApp.swift */; };
+		B876606222F14F2CB1B273C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79B6829B9E14C5B8682533C /* ContentView.swift */; };
+		5EB80FF764F4476FA53832F5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A139DF38E4E5DA61D6102 /* Photo.swift */; };
+		E2E49474B8F94955B304124D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E973D57484AB38ECC0D0B /* Album.swift */; };
+		61EAA9C6192A4A738CC57527 /* EventClustering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D530F7AA24F410FB73EA128 /* EventClustering.swift */; };
+		EA3218745B934398A87C9C88 /* ImageAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F181EC86C04C7C92369341 /* ImageAnalysis.swift */; };
+		B5A02D47EB0249A68D9B45E5 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46EA5AEE174210929CADDB /* PhotoLibraryService.swift */; };
+		3DC446E8C9AB470897E65DF3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BD51A21A14E77959DB4EF /* ImageLoader.swift */; };
+		B3B44D1F5CD8446A9A1ADABB /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC7723EC594F5EBB333150 /* LibraryView.swift */; };
+		148E9F833FDD474389190821 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E553407CB904FDCBD0D1876 /* GroupDetailView.swift */; };
+		02625AFC12D745EFA6CBB272 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF2F99355E945DB971C13B0 /* SortView.swift */; };
+		292D797302684C6D80B1F237 /* SwipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F6B3E2BB7147E581F836CC /* SwipeCardView.swift */; };
+		DD327AB68CD34F719B2DBBBC /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C22E46EB122472786B2F499 /* SuggestionsView.swift */; };
+		5C50C55EB2FF4531BA3B117D /* MemoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DC4FD085D484C8FD358C9 /* MemoriesView.swift */; };
+		1D7C10BB3151482DABAD648B /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8073D63B2D4A76A4AB7AE4 /* AlbumsView.swift */; };
+		408A4712A3A54490B3E737E1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDE89FFB44814ACD9A405 /* SettingsView.swift */; };
+		714CED8A790F471F919E38FC /* PhotoThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CA5C6B63C34C68A63EC77D /* PhotoThumbnailView.swift */; };
+		0545F909BD8941F49C91A7E0 /* PhotoViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05238344394E07B0665806 /* PhotoViewerView.swift */; };
+		A762B40819B04228A35F71B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA05A1F7D9D4C3A91CCC79F /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C441AAC8EB814982984887A8 /* Helder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB8C774BF48646A4B7EE3C9A /* HelderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelderApp.swift; sourceTree = "<group>"; };
+		F79B6829B9E14C5B8682533C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		506A139DF38E4E5DA61D6102 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		775E973D57484AB38ECC0D0B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		5D530F7AA24F410FB73EA128 /* EventClustering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventClustering.swift; sourceTree = "<group>"; };
+		A7F181EC86C04C7C92369341 /* ImageAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnalysis.swift; sourceTree = "<group>"; };
+		7B46EA5AEE174210929CADDB /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
+		0C8BD51A21A14E77959DB4EF /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		24BC7723EC594F5EBB333150 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		0E553407CB904FDCBD0D1876 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
+		CEF2F99355E945DB971C13B0 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
+		38F6B3E2BB7147E581F836CC /* SwipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardView.swift; sourceTree = "<group>"; };
+		4C22E46EB122472786B2F499 /* SuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
+		657DC4FD085D484C8FD358C9 /* MemoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesView.swift; sourceTree = "<group>"; };
+		AF8073D63B2D4A76A4AB7AE4 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		266EDE89FFB44814ACD9A405 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		44CA5C6B63C34C68A63EC77D /* PhotoThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoThumbnailView.swift; sourceTree = "<group>"; };
+		9D05238344394E07B0665806 /* PhotoViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerView.swift; sourceTree = "<group>"; };
+		BCA05A1F7D9D4C3A91CCC79F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		29723DA8EBD9473F81D9A579 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F95029D8C524A61B3B43599 = {
+			isa = PBXGroup;
+			children = (
+				A83553AD65184108A5EA803A /* Helder */,
+				65D286C59B3742B5BD023F41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65D286C59B3742B5BD023F41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C441AAC8EB814982984887A8 /* Helder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A83553AD65184108A5EA803A /* Helder */ = {
+			isa = PBXGroup;
+			children = (
+				DB8C774BF48646A4B7EE3C9A /* HelderApp.swift */,
+				F79B6829B9E14C5B8682533C /* ContentView.swift */,
+				A6371C67B3CD4C4E90467DEB /* Models */,
+				BB52E98F6D314EBE80A66912 /* Services */,
+				0B8D57287E3C4C49A9105043 /* Views */,
+				BCA05A1F7D9D4C3A91CCC79F /* Assets.xcassets */,
+			);
+			path = Helder;
+			sourceTree = "<group>";
+		};
+		A6371C67B3CD4C4E90467DEB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				506A139DF38E4E5DA61D6102 /* Photo.swift */,
+				775E973D57484AB38ECC0D0B /* Album.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB52E98F6D314EBE80A66912 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5D530F7AA24F410FB73EA128 /* EventClustering.swift */,
+				A7F181EC86C04C7C92369341 /* ImageAnalysis.swift */,
+				7B46EA5AEE174210929CADDB /* PhotoLibraryService.swift */,
+				0C8BD51A21A14E77959DB4EF /* ImageLoader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0B8D57287E3C4C49A9105043 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				24BC7723EC594F5EBB333150 /* LibraryView.swift */,
+				0E553407CB904FDCBD0D1876 /* GroupDetailView.swift */,
+				CEF2F99355E945DB971C13B0 /* SortView.swift */,
+				38F6B3E2BB7147E581F836CC /* SwipeCardView.swift */,
+				4C22E46EB122472786B2F499 /* SuggestionsView.swift */,
+				657DC4FD085D484C8FD358C9 /* MemoriesView.swift */,
+				AF8073D63B2D4A76A4AB7AE4 /* AlbumsView.swift */,
+				266EDE89FFB44814ACD9A405 /* SettingsView.swift */,
+				44CA5C6B63C34C68A63EC77D /* PhotoThumbnailView.swift */,
+				9D05238344394E07B0665806 /* PhotoViewerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		514A616CFB8B4EE49EB7B6BD /* Helder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 811704C24B034C9F9CBF899E /* Build configuration list for PBXNativeTarget "Helder" */;
+			buildPhases = (
+				CB9DC30D278D477D94BE1506 /* Sources */,
+				29723DA8EBD9473F81D9A579 /* Frameworks */,
+				67A6EDB1614A487FAC299276 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Helder;
+			productName = Helder;
+			productReference = C441AAC8EB814982984887A8 /* Helder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88CE7CC7123B41439C0016D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					514A616CFB8B4EE49EB7B6BD = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 710248FE3BA849FDAEA63DD1 /* Build configuration list for PBXProject "Helder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = nl;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				nl,
+				Base,
+			);
+			mainGroup = 8F95029D8C524A61B3B43599;
+			productRefGroup = 65D286C59B3742B5BD023F41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				514A616CFB8B4EE49EB7B6BD /* Helder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67A6EDB1614A487FAC299276 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A762B40819B04228A35F71B5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB9DC30D278D477D94BE1506 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788ED0E9CE18464780EC5231 /* HelderApp.swift in Sources */,
+				B876606222F14F2CB1B273C7 /* ContentView.swift in Sources */,
+				5EB80FF764F4476FA53832F5 /* Photo.swift in Sources */,
+				E2E49474B8F94955B304124D /* Album.swift in Sources */,
+				61EAA9C6192A4A738CC57527 /* EventClustering.swift in Sources */,
+				EA3218745B934398A87C9C88 /* ImageAnalysis.swift in Sources */,
+				B5A02D47EB0249A68D9B45E5 /* PhotoLibraryService.swift in Sources */,
+				3DC446E8C9AB470897E65DF3 /* ImageLoader.swift in Sources */,
+				B3B44D1F5CD8446A9A1ADABB /* LibraryView.swift in Sources */,
+				148E9F833FDD474389190821 /* GroupDetailView.swift in Sources */,
+				02625AFC12D745EFA6CBB272 /* SortView.swift in Sources */,
+				292D797302684C6D80B1F237 /* SwipeCardView.swift in Sources */,
+				DD327AB68CD34F719B2DBBBC /* SuggestionsView.swift in Sources */,
+				5C50C55EB2FF4531BA3B117D /* MemoriesView.swift in Sources */,
+				1D7C10BB3151482DABAD648B /* AlbumsView.swift in Sources */,
+				408A4712A3A54490B3E737E1 /* SettingsView.swift in Sources */,
+				714CED8A790F471F919E38FC /* PhotoThumbnailView.swift in Sources */,
+				0545F909BD8941F49C91A7E0 /* PhotoViewerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DBCA9DC51BD1428F9F3E67C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ADE23DD51FC24C129A237144 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D89CDEB85A84D47BE6D0A41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Helder heeft toegang tot je foto's nodig om ze te tonen en te organiseren. Er wordt niets geüpload of gedeeld met wie dan ook.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.patrickloonstra.helder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2C82044CD6834101A47D41F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Helder heeft toegang tot je foto's nodig om ze te tonen en te organiseren. Er wordt niets geüpload of gedeeld met wie dan ook.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.patrickloonstra.helder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		710248FE3BA849FDAEA63DD1 /* Build configuration list for PBXProject "Helder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBCA9DC51BD1428F9F3E67C8 /* Debug */,
+				ADE23DD51FC24C129A237144 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		811704C24B034C9F9CBF899E /* Build configuration list for PBXNativeTarget "Helder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D89CDEB85A84D47BE6D0A41 /* Debug */,
+				2C82044CD6834101A47D41F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88CE7CC7123B41439C0016D6 /* Project object */;
+}

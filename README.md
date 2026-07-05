@@ -45,7 +45,12 @@ push. **Eenmalige setup**: zet in de repository-instellingen `Settings → Pages
 
 ## Platform
 
-Dit is een PWA (installeerbaar op telefoon/desktop, werkt offline via een
-service worker) — geen native iOS/Android app. Zie de sessie-notities voor de
-afweging: bouwen, testen én automatisch deployen kon zo zonder Xcode of een
-Apple Developer account.
+De hoofdversie is een PWA (installeerbaar op telefoon/desktop, werkt offline
+via een service worker) — die kon volledig in deze omgeving gebouwd, getest
+én automatisch gedeployed worden zonder Xcode of een Apple Developer account.
+
+Daarnaast staat er een native iOS-app in [`ios/Helder`](ios/Helder) (SwiftUI,
+PhotoKit, SwiftData) met dezelfde features. Die code is geschreven zonder
+toegang tot Xcode/macOS, dus **ongecompileerd** — zie
+[`ios/Helder/README.md`](ios/Helder/README.md) voor wat daarvan wel en niet
+geverifieerd is, en hoe je 'm zelf bouwt en op je telefoon installeert.
