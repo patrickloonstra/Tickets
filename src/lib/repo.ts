@@ -34,8 +34,15 @@ export async function importFiles(files: File[], onProgress?: (done: number, tot
   }
 }
 
-export async function decidePhoto(id: string, decision: 'kept' | 'archived'): Promise<void> {
+/** Returns the photo's previous status, so callers can offer an undo. */
+export async function decidePhoto(id: string, decision: 'kept' | 'archived'): Promise<PhotoStatus | undefined> {
+  const photo = await db.photos.get(id)
   await db.photos.update(id, { status: decision })
+  return photo?.status
+}
+
+export async function setStatus(id: string, status: PhotoStatus): Promise<void> {
+  await db.photos.update(id, { status })
 }
 
 export async function restorePhoto(id: string): Promise<void> {

@@ -33,7 +33,7 @@ export function SettingsView() {
 
   return (
     <div className="px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
-      <h1 className="mb-5 text-xl font-medium">Instellingen &amp; privacy</h1>
+      <h1 className="mb-5 text-2xl font-bold tracking-tight">Instellingen &amp; privacy</h1>
 
       <section className="mb-6 rounded-2xl border border-[var(--color-hairline)] p-4">
         <h2 className="mb-3 text-sm font-medium">Overzicht</h2>

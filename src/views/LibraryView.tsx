@@ -87,7 +87,7 @@ export function LibraryView() {
   return (
     <div className="px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
       <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-xl font-medium">Bibliotheek</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Bibliotheek</h1>
         <ImportButton label="+ Toegang" />
       </div>
 

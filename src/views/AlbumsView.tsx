@@ -23,7 +23,7 @@ export function AlbumsView() {
         <button type="button" onClick={() => setSelected(null)} className="mb-4 text-sm text-[var(--color-mist)]">
           ← Albums
         </button>
-        <h1 className="mb-5 text-xl font-medium">{album?.name}</h1>
+        <h1 className="mb-5 text-2xl font-bold tracking-tight">{album?.name}</h1>
         {albumPhotos.length === 0 ? (
           <EmptyState title="Nog leeg" description="Voeg foto's toe aan dit album vanuit de bibliotheek." />
         ) : (
@@ -41,7 +41,7 @@ export function AlbumsView() {
   return (
     <div className="px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="text-xl font-medium">Albums</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Albums</h1>
         <button
           type="button"
           onClick={() => setCreating(true)}

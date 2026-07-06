@@ -38,7 +38,7 @@ export function SuggestionsView() {
 
   return (
     <div className="px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
-      <h1 className="mb-1 text-xl font-medium">Opschonen</h1>
+      <h1 className="mb-1 text-2xl font-bold tracking-tight">Opschonen</h1>
       <p className="mb-5 text-sm text-[var(--color-mist)]">
         Suggesties op basis van gelijkenis en scherpte — jij beslist, niets verdwijnt automatisch.
       </p>

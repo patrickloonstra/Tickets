@@ -16,11 +16,19 @@
 
   --color-glow-1: #ffd9a8;
   --color-glow-2: #ff8a3d;
-  --color-keep: #58d68d;
-  --color-let-go: #ff6b5e;
+  --color-keep: #2ee6a6;
+  --color-let-go: #ff5470;
+  --color-coral: #ff8a65;
+
+  --color-confetti-1: #ff8a3d;
+  --color-confetti-2: #2ee6a6;
+  --color-confetti-3: #ffd166;
+  --color-confetti-4: #ff5470;
+  --color-confetti-5: #7dd3fc;
 
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-pop: cubic-bezier(0.34, 1.76, 0.64, 1);
 }
 
 html {

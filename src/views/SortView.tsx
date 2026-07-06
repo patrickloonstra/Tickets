@@ -1,9 +1,12 @@
-import { useEffect } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { SwipeCard } from '../components/SwipeCard'
 import { EmptyState } from '../components/EmptyState'
+import { ConfettiBurst } from '../components/ConfettiBurst'
 import { usePhotosByStatus } from '../hooks/usePhotos'
 import { decidePhoto } from '../lib/repo'
+import { useUndo } from '../context/UndoContext'
+import type { Photo } from '../lib/db'
 
 const STACK_SIZE = 4
 
@@ -14,25 +17,92 @@ interface Props {
   onBack?: () => void
 }
 
+interface SessionStats {
+  kept: number
+  archived: number
+  bytesFreed: number
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+}
+
+const prefersReducedMotion =
+  typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
 export function SortView({ photoIds, title, onBack }: Props) {
   const allInbox = usePhotosByStatus(['inbox'])
   const inbox = photoIds ? allInbox?.filter((p) => photoIds.includes(p.id)) : allInbox
   const queue = inbox?.slice(0, STACK_SIZE)
   const top = queue?.[0]
+  const { offerUndo } = useUndo()
+
+  const [stats, setStats] = useState<SessionStats>({ kept: 0, archived: 0, bytesFreed: 0 })
+  const [showCelebration, setShowCelebration] = useState(false)
+  const hadPhotosRef = useRef(false)
+
+  async function decide(photo: Photo, decision: 'kept' | 'archived') {
+    const previousStatus = await decidePhoto(photo.id, decision)
+    offerUndo(photo.id, previousStatus, decision === 'kept' ? 'Foto bewaard' : 'Foto gearchiveerd')
+    setStats((s) => ({
+      kept: s.kept + (decision === 'kept' ? 1 : 0),
+      archived: s.archived + (decision === 'archived' ? 1 : 0),
+      bytesFreed: s.bytesFreed + (decision === 'archived' ? photo.size : 0),
+    }))
+  }
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (!top) return
-      if (e.key === 'ArrowRight') decidePhoto(top.id, 'kept')
-      if (e.key === 'ArrowLeft') decidePhoto(top.id, 'archived')
+      if (e.key === 'ArrowRight') decide(top, 'kept')
+      if (e.key === 'ArrowLeft') decide(top, 'archived')
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [top])
+
+  useEffect(() => {
+    if (!inbox) return
+    if (inbox.length > 0) {
+      hadPhotosRef.current = true
+      setShowCelebration(false)
+    } else if (hadPhotosRef.current && (stats.kept > 0 || stats.archived > 0)) {
+      setShowCelebration(true)
+      hadPhotosRef.current = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inbox?.length])
 
   if (inbox === undefined) return null
 
   if (inbox.length === 0) {
+    if (showCelebration) {
+      return (
+        <div className="relative flex flex-1 flex-col items-center justify-center gap-3 px-8 text-center">
+          {!prefersReducedMotion && <ConfettiBurst />}
+          <div className="mb-1 flex h-14 w-14 items-center justify-center rounded-full text-2xl" style={{ background: 'linear-gradient(135deg, var(--color-glow-1), var(--color-glow-2))' }}>
+            ✓
+          </div>
+          <h2 className="text-xl font-semibold text-[var(--color-paper)]">Klaar!</h2>
+          <p className="font-mono-num text-sm text-[var(--color-mist)]">
+            {stats.kept} bewaard · {stats.archived} gearchiveerd
+          </p>
+          {stats.bytesFreed > 0 && (
+            <p className="text-sm" style={{ color: 'var(--color-coral)' }}>
+              ≈ {formatBytes(stats.bytesFreed)} opgeruimd
+            </p>
+          )}
+          {onBack && (
+            <button type="button" onClick={onBack} className="mt-3 text-sm underline text-[var(--color-mist)]">
+              Terug
+            </button>
+          )}
+        </div>
+      )
+    }
+
     return (
       <EmptyState
         icon="◐"
@@ -73,30 +143,32 @@ export function SortView({ photoIds, title, onBack }: Props) {
               photo={photo}
               isTop={i === 0}
               stackIndex={i}
-              onDecide={(decision) => decidePhoto(photo.id, decision)}
+              onDecide={(decision) => decide(photo, decision)}
             />
           ))}
         </AnimatePresence>
       </div>
       <div className="mt-6 flex items-center gap-8">
-        <button
+        <motion.button
+          whileTap={{ scale: 0.88 }}
           type="button"
           aria-label="Archiveren"
-          onClick={() => top && decidePhoto(top.id, 'archived')}
-          className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--color-hairline-strong)] text-xl transition-transform active:scale-90"
-          style={{ color: 'var(--color-let-go)' }}
+          onClick={() => top && decide(top, 'archived')}
+          className="flex h-14 w-14 items-center justify-center rounded-full border-2 text-xl"
+          style={{ borderColor: 'var(--color-let-go)', color: 'var(--color-let-go)' }}
         >
           ✕
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileTap={{ scale: 0.88 }}
           type="button"
           aria-label="Bewaren"
-          onClick={() => top && decidePhoto(top.id, 'kept')}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-2xl text-[var(--color-ink)] transition-transform active:scale-90"
-          style={{ background: 'linear-gradient(135deg, var(--color-glow-1), var(--color-glow-2))' }}
+          onClick={() => top && decide(top, 'kept')}
+          className="flex h-16 w-16 items-center justify-center rounded-full text-2xl text-white shadow-lg"
+          style={{ background: 'var(--color-keep)' }}
         >
           ♥
-        </button>
+        </motion.button>
       </div>
       <p className="mt-4 text-xs text-[var(--color-mist-dim)]">Swipe, of gebruik de pijltjestoetsen</p>
     </div>

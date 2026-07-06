@@ -31,7 +31,7 @@ export function MemoriesView() {
 
   return (
     <div className="px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
-      <h1 className="mb-5 text-xl font-medium">Herinneringen</h1>
+      <h1 className="mb-5 text-2xl font-bold tracking-tight">Herinneringen</h1>
 
       {onThisDay.length > 0 && (
         <section className="mb-8">

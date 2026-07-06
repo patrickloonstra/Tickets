@@ -15,8 +15,11 @@ export function SwipeCard({ photo, isTop, stackIndex, onDecide }: Props) {
   const url = useObjectUrl(photo.blob)
   const x = useMotionValue(0)
   const rotate = useTransform(x, [-300, 300], [-18, 18])
-  const keepOpacity = useTransform(x, [20, SWIPE_THRESHOLD], [0, 1])
-  const letGoOpacity = useTransform(x, [-SWIPE_THRESHOLD, -20], [1, 0])
+
+  const keepWashOpacity = useTransform(x, [10, SWIPE_THRESHOLD], [0, 0.55])
+  const letGoWashOpacity = useTransform(x, [-SWIPE_THRESHOLD, -10], [0.55, 0])
+  const keepBadgeScale = useTransform(x, [10, SWIPE_THRESHOLD], [0.6, 1])
+  const letGoBadgeScale = useTransform(x, [-SWIPE_THRESHOLD, -10], [1, 0.6])
 
   return (
     <motion.div
@@ -42,19 +45,37 @@ export function SwipeCard({ photo, isTop, stackIndex, onDecide }: Props) {
     >
       <div className="relative h-full w-full overflow-hidden rounded-3xl bg-[var(--color-surface)] shadow-2xl shadow-black/50">
         {url && <img src={url} alt="" className="h-full w-full object-cover" draggable={false} />}
+
         {isTop && (
           <>
             <motion.div
-              style={{ opacity: keepOpacity, color: 'var(--color-keep)', borderColor: 'var(--color-keep)' }}
-              className="absolute left-5 top-6 rotate-[-8deg] rounded-lg border-2 px-3 py-1 text-sm font-bold tracking-wide"
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: keepWashOpacity,
+                background: 'linear-gradient(180deg, transparent 40%, var(--color-keep) 100%)',
+              }}
+            />
+            <motion.div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: letGoWashOpacity,
+                background: 'linear-gradient(180deg, transparent 40%, var(--color-let-go) 100%)',
+              }}
+            />
+
+            <motion.div
+              style={{ opacity: keepWashOpacity, scale: keepBadgeScale }}
+              className="absolute left-6 top-6 flex items-center gap-1.5 rounded-full px-4 py-2 text-base font-extrabold tracking-wide text-white shadow-lg"
             >
-              BEWAREN
+              <span className="absolute inset-0 -z-10 rounded-full" style={{ background: 'var(--color-keep)' }} />
+              ♥ BEWAREN
             </motion.div>
             <motion.div
-              style={{ opacity: letGoOpacity, color: 'var(--color-let-go)', borderColor: 'var(--color-let-go)' }}
-              className="absolute right-5 top-6 rotate-[8deg] rounded-lg border-2 px-3 py-1 text-sm font-bold tracking-wide"
+              style={{ opacity: letGoWashOpacity, scale: letGoBadgeScale }}
+              className="absolute right-6 top-6 flex items-center gap-1.5 rounded-full px-4 py-2 text-base font-extrabold tracking-wide text-white shadow-lg"
             >
-              WEG
+              <span className="absolute inset-0 -z-10 rounded-full" style={{ background: 'var(--color-let-go)' }} />
+              WEG ✕
             </motion.div>
           </>
         )}

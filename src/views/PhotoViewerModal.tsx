@@ -12,6 +12,7 @@ import {
   touchLastViewed,
 } from '../lib/repo'
 import { formatDateNl } from '../lib/date'
+import { useUndo } from '../context/UndoContext'
 
 interface Props {
   photoId: string
@@ -24,6 +25,7 @@ export function PhotoViewerModal({ photoId, onClose }: Props) {
   const albums = useAlbums()
   const [showAlbumPicker, setShowAlbumPicker] = useState(false)
   const [newAlbumName, setNewAlbumName] = useState('')
+  const { offerUndo } = useUndo()
 
   useEffect(() => {
     touchLastViewed(photoId)
@@ -130,8 +132,9 @@ export function PhotoViewerModal({ photoId, onClose }: Props) {
         ) : (
           <button
             type="button"
-            onClick={() => {
-              decidePhoto(photo.id, 'archived')
+            onClick={async () => {
+              const previousStatus = await decidePhoto(photo.id, 'archived')
+              offerUndo(photo.id, previousStatus, 'Foto gearchiveerd')
               onClose()
             }}
             className="rounded-full border border-[var(--color-hairline-strong)] px-5 py-2.5 text-sm"

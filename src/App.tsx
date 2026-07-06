@@ -8,6 +8,7 @@ import { MemoriesView } from './views/MemoriesView'
 import { AlbumsView } from './views/AlbumsView'
 import { SettingsView } from './views/SettingsView'
 import { usePhotosByStatus } from './hooks/usePhotos'
+import { UndoProvider } from './context/UndoContext'
 
 const views: Record<ViewName, React.ComponentType> = {
   library: LibraryView,
@@ -26,40 +27,42 @@ function App() {
   const ActiveView = showSettings ? SettingsView : views[view]
 
   return (
-    <div className="flex min-h-dvh flex-col">
-      <div className="grain" />
+    <UndoProvider>
+      <div className="flex min-h-dvh flex-col">
+        <div className="grain" />
 
-      <button
-        type="button"
-        onClick={() => setShowSettings((v) => !v)}
-        aria-label="Instellingen en privacy"
-        className="fixed right-3 z-40 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-surface)]/80 text-sm text-[var(--color-mist)] backdrop-blur"
-        style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}
-      >
-        {showSettings ? '✕' : '⚙'}
-      </button>
-
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={showSettings ? 'settings' : view}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-1 flex-col"
+        <button
+          type="button"
+          onClick={() => setShowSettings((v) => !v)}
+          aria-label="Instellingen en privacy"
+          className="fixed right-3 z-40 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-surface)]/80 text-sm text-[var(--color-mist)] backdrop-blur"
+          style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}
         >
-          <ActiveView />
-        </motion.main>
-      </AnimatePresence>
+          {showSettings ? '✕' : '⚙'}
+        </button>
 
-      {!showSettings && (
-        <BottomNav
-          active={view}
-          onChange={setView}
-          badgeCounts={{ sort: inbox?.length }}
-        />
-      )}
-    </div>
+        <AnimatePresence mode="wait">
+          <motion.main
+            key={showSettings ? 'settings' : view}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-1 flex-col"
+          >
+            <ActiveView />
+          </motion.main>
+        </AnimatePresence>
+
+        {!showSettings && (
+          <BottomNav
+            active={view}
+            onChange={setView}
+            badgeCounts={{ sort: inbox?.length }}
+          />
+        )}
+      </div>
+    </UndoProvider>
   )
 }
 

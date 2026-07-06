@@ -4,6 +4,7 @@ import { EmptyState } from '../components/EmptyState'
 import { PhotoViewerModal } from './PhotoViewerModal'
 import { SortView } from './SortView'
 import { decidePhoto } from '../lib/repo'
+import { useUndo } from '../context/UndoContext'
 import type { Photo } from '../lib/db'
 
 interface Props {
@@ -17,6 +18,12 @@ export function GroupDetailView({ title, subtitle, photos, onBack }: Props) {
   const [openId, setOpenId] = useState<string | null>(null)
   const [sorting, setSorting] = useState(false)
   const inboxIds = photos.filter((p) => p.status === 'inbox').map((p) => p.id)
+  const { offerUndo } = useUndo()
+
+  async function discard(photo: Photo) {
+    const previousStatus = await decidePhoto(photo.id, 'archived')
+    offerUndo(photo.id, previousStatus, 'Foto weggegooid')
+  }
 
   if (sorting) {
     return <SortView photoIds={inboxIds} title={title} onBack={() => setSorting(false)} />
@@ -29,7 +36,7 @@ export function GroupDetailView({ title, subtitle, photos, onBack }: Props) {
       </button>
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-medium">{title}</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
           {subtitle && <p className="text-xs text-[var(--color-mist)]">{subtitle}</p>}
         </div>
         {inboxIds.length > 0 && (
@@ -54,7 +61,7 @@ export function GroupDetailView({ title, subtitle, photos, onBack }: Props) {
               {photo.status !== 'archived' && (
                 <button
                   type="button"
-                  onClick={() => decidePhoto(photo.id, 'archived')}
+                  onClick={() => discard(photo)}
                   className="absolute inset-x-1 bottom-1 rounded-md bg-black/60 py-0.5 text-[10px] backdrop-blur"
                   style={{ color: 'var(--color-let-go)' }}
                 >
